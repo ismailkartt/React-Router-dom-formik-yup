@@ -4,7 +4,7 @@ import Menu from "./Menu";
 import axios from "axios";
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [data, setdata] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -12,7 +12,8 @@ const Home = () => {
         const resp = await axios.get(
           "https://jsonplaceholder.typicode.com/posts"
         );
-        setData(resp.data); 
+
+        setdata(resp.data);
       } catch (error) {
         console.log(error);
       }
@@ -26,14 +27,15 @@ const Home = () => {
       <Menu />
       <Row className="d-flex flex-wrap mt-5 gap-4 text-center">
         {data.map((item) => (
-          <Col key={item.id}>
-            <Card style={{ width: "18rem", height: "20rem" }}>
+          <Col>
+            <Card style={{ width: "18rem", height:"20rem" }}>
+           
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Card.Subtitle>{item.userId}</Card.Subtitle>
+                  <Card.Subtitle>{item.userId}</Card.Subtitle>
                 <Card.Title>{item.id}</Card.Title>
                 <Card.Text>
-                 {item.body}
+                  {item.body}
                 </Card.Text>
               </Card.Body>
             </Card>
